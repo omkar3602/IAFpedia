@@ -1,0 +1,95 @@
+{% extends 'base_signup_page.html' %}
+{% load static %}
+
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style_signup_page.css' %}">{%endblock css%}
+{% block title %}Sign up{% endblock title %}
+{% block body %}
+<div class="bg">
+    {% for message in messages %}
+        <h2 id="message">{{message}}</h2>
+        <span class="close">&times;</span>
+    {% endfor %}
+    <form method="POST" action="{% url 'signup_page' %}">
+        {% csrf_token %}
+        <h1>SIGNUP</h1>
+        <div class="medium-space"></div>
+        <label>Enter fullname:</label>
+        <input id="fname_test" name="fname_test" type="text" required placeholder="Your fullname">
+        <div class="small-space"></div>
+
+        <label>Enter username:</label>
+        <input id="uname_test" name="uname_test" type="text" required placeholder="Your username" onchange="checkuname()">
+        <ul id="uname_ans"></ul>
+        <div class="medium-space"></div>
+
+        <label class="inline-label">Enter Date of Birth:</label>
+        <input id="date_test" name="date_test" type="date" placeholder="dd-mm-yyyy" required onchange="check_date(document.getElementById('date_test').value)">
+        <ul id="date_ans"></ul>
+        <div class="small-space"></div>
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="btn" required value="Male">
+        <label class="inline-label gender-label" for="male">Male</label>
+        <input type="radio" id="female"name="btn"value="Female">
+        <label class="inline-label gender-label" for="female">Female</label>
+        <input type="radio" id="other" name="btn" value="Other">
+        <label class="inline-label gender-label" for="other">Other</label>
+        <div class="small-space"></div>
+
+        <label>Enter email:</label>
+        <input id="email_test" name="email_test" type="text" required placeholder="Your email" onchange="check_email()">
+        <ul id="email_ans"></ul>
+        <div class="small-space"></div>
+
+        <!--
+        <label>Enter state:</label>
+        <select name="State" id="State" required>
+        </select>
+        <div class="small-space"></div>
+
+        <label>Enter city:</label>
+        <select name="City" id="City" required>
+            <option>Select City</option>
+        </select>
+        -->
+        <label>Enter state:</label>
+        <select onchange="print_city('state', this.selectedIndex);" id="sts" name ="state" class="form-control" required></select>
+        <div class="small-space"></div>
+
+        <label>Enter city:</label>
+        <select id ="state" class="form-control" name="city" required>
+            <option>Select City</option>
+        </select>
+
+        <div class="small-space"></div>
+
+        <label>Enter pincode:</label>
+        <input id="pincode_test" name="pincode_test" type="number" required placeholder="Your pincode" onchange="check_pincode()">
+        <ul id="pincode_ans"></ul>
+        <div class="small-space"></div>
+        
+        <label class="pass">Enter password:</label>
+        <input id="pass_test1" name="pass_test1" type="password" required placeholder="Your password" onchange="checkpass()">
+        <ul id="pass_ans1"></ul>
+        <div class="small-space"></div>
+
+        <label class="pass">Re-enter password:</label>
+        <input id="pass_test2" name="pass_test2" type="password" required placeholder="Your password" onchange="confirmpass()">
+        <p id="pass_ans2"></p>
+        <div class="medium-space"></div>
+
+        <div class="center">
+            <span>Already have an account,</span>
+            <a href="{% url 'login_page' %}">Log in!</a>
+
+            <div class="medium-space"></div>
+            <input id="submit_test" type="submit" value="Signup" class='button'>
+            <p id="submit"></p>
+        </div>
+    </form>
+</div>
+<script src="{% static 'scripts/sigup.js' %}"></script>
+<script src="{% static 'scripts/cities.js' %}"></script>
+<script language="javascript">print_state("sts");</script>
+{% endblock body %}

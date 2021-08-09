@@ -1,0 +1,56 @@
+{% extends 'base_page.html' %}
+{% load static %}
+
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/privacy_page.css' %}">{%endblock css%}
+{% block title %}Privacy policy{% endblock title %}
+{% block body %}
+<div id="privacy_container">
+    <h1 class="privacy-heading">Privacy Policy</h1>
+    <article>
+        <section id="section1">
+            <p>Privacy Policy
+                At IAFpedia, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by IAFpedia and how we use it.
+                If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us through email at iafpedia21@gmail.com  
+                This privacy policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in IAFpedia. This policy is not applicable to any information collected offline or via channels other than this website.
+            </p>
+            <br>
+            <br>
+            <h2 class="privacy-heading">Consent</h2>
+            <p>
+                By using our website, you hereby consent to our Privacy Policy and agree to its terms.
+                <br>
+                <br>
+                Information we collect
+                
+                The personal information that you are asked to provide, and the reasons why you are asked to provide it, will be made clear to you at the point we ask you to provide your personal information.
+                <br>
+                <br>
+                If you contact us directly, we may receive additional information about you such as your name, email address, phone number, the contents of the message and/or attachments you may send us, and any other information you may choose to provide.
+                <br>
+                <br>
+                When you register for an Account, we may ask for your contact information, including items such as name, company name, address, email address, and telephone number.
+                <br>
+                <br>
+                <h2>How we use your information?</h2>
+                <br>
+                <br>
+                We use the information we collect in various ways, including to:
+                <br>
+                <br>
+                <ul id="privacy-list">
+                    <li>Provide, operate, and maintain our website.</li>
+                    <li>Improve, personalize, and expand our website.</li>
+                    <li>Understand and analyze how you use our website.</li>
+                    <li>Develop new products, services, features, and functionality.</li>
+                    <li>Send you emails.</li>
+                    <li>Find and prevent fraud.</li>
+                </ul>
+            </p>
+        </section>
+    </article>
+</div>
+{% endblock body %}
+{% block space %}
+<div style="margin-top: 900px;"></div>
+{% endblock space %}

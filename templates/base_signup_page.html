@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/style_base_page.css' %}"> -->
+    {%block css%}{%endblock css%}
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon_package_v0.16/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon_package_v0.16/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon_package_v0.16/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'images/favicon_package_v0.16/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'images/favicon_package_v0.16/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>{% block title %}{% endblock title %} | IAFpedia</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img id="logo1" src="{% static 'images/website logos/logo1.jpeg' %}" alt="logo">
+            <img id="logo2" src="{% static 'images/website logos/logo2.png' %}" alt="nameplate">
+            
+            <div class="right">
+                <a href="https://www.indianarmy.nic.in/" target="_blank">
+                    <img class="iaf-logos" title="Go to official Indian Army page" src="{% static 'images/logos/army.png' %}" alt="Army logo">
+                </a>
+                <a href="http://www.indiannavy.nic.in/" target="_blank">
+                    <img class="iaf-logos" title="Go to official Indian Navy page" src="{% static 'images/logos/navy.png' %}" alt="Navy logo">
+                </a>
+                <a href="http://indianairforce.nic.in/" target="_blank">
+                    <img class="iaf-logos" title="Go to official Indian Airforce force page" src="{% static 'images/logos/airforce.png' %}" alt="Airforce logo">
+                </a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div id="main_container">
+            {% block body %}{% endblock body %}
+        </div>
+        {% block space %}{% endblock space %}
+        <!-- <div class="last-space"></div> -->
+    </main>
+    <script>
+        var msg=document.getElementById("message");
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function(){
+            msg.style.display = "none";
+            span.style.display = "none";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+{% extends 'base_signup_page.html' %}
+{% load static %}
+
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style_login_page.css' %}">{%endblock css%}
+{% block title %}Log in{% endblock title %}
+{% block body %}
+<div class="bg">
+    {% for message in messages %}
+        <h2 id="message">{{message}}</h2>
+        <span class="close">&times;</span>
+    {% endfor %}
+    <form method="POST" action="{% url 'login_page' %}">
+        {% csrf_token %}
+        <h1>LOGIN</h1>
+        <div class="medium-space"></div>
+
+        <label>Enter username:</label>
+        <div class="small-space"></div>
+        <input type="text" required placeholder="Your username" id="uname_test" name="uname_test">
+        <div class="small-space"></div>
+
+        <label class="pass">Enter password:</label>
+        <div class="small-space"></div>
+        <input type="password" required placeholder="Your password" id="pass_test" name="pass_test">
+        <div class="medium-space"></div>
+        <ul id="db_ans"></ul>
+        <div class="center">
+            <a href="{% url 'password_reset' %}">Forgot password?</a>
+            <div class="small-space"></div>
+            <span>Don't have an account,</span>
+            <a href="{% url 'signup_page' %}">Sign up!</a>
+
+            <div class="small-space"></div>
+            <button type="submit" class="button" id="submit">Login</button>
+            <!--<input type="submit" value="Login" class="button" id="submit" onclick="pass_test()">-->
+
+            <!--Abhishek ADDED-->
+            <!-- <div class="small-space"></div>
+            <div id="or">-OR-</div>
+            <div id="sm-text">Sign Up with</div>
+
+            <div class="socialBtn">
+                <div id="googleicon">
+                    <a href="https://www.google.com/" target="blank">
+                        <button type="button">
+                            <span class="space" >Google</span>
+                            <i class="fab fa-google"></i>
+                        </button>
+                    </a>
+                </div>
+                <div id="facebookicon">
+                    <a href="https://www.facebook.com" target="main">
+                        <button type="button">
+                            <span class="space">Facebook</span>
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                    </a>
+                </div>
+            </div> -->
+            <!--Abhishek ADDED-->
+        </div>
+    </form>
+</div>
+<script src="{% static 'scripts/login.js' %}"></script>
+{% endblock body %}

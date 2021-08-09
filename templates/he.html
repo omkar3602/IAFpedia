@@ -1,0 +1,34 @@
+{% extends 'base_page.html' %}
+{% load static %}
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/he.css' %}">
+{%endblock css%}
+{% block title %}Historical Events{% endblock title %}
+{% block body %}
+<!-- Edited By Aditya Pachore on 26-06-2021 -->
+            <section>
+                <div class="container-class">
+                    <h1 class="heading">Historical Events</h1>
+                    <div class="card-wrapper">
+                        {% for HisEvent in HisEvents %}
+                        <div class="card">
+                            {% if HisEvent.image %}
+                            <img src="{{ HisEvent.image.url }}" alt="cardbg" class="cardimg" width=40>
+                            {% endif %}
+                            <h1>{{ HisEvent.title }}</h1>
+                            <p class="title">{{ HisEvent.duration }}</p>
+                            <p class="about">
+                                {{ HisEvent.body|truncatewords:40 }}
+                                <a href="{{ HisEvent.link }}" class="btn" target="_blank">Continue Reading</a>
+                            </p>
+                        </div>
+                        {% endfor %}
+    
+                    
+                </div>
+            </section>
+            <!-- Edited By Aditya Pachore on 26-06-2021 -->
+{% endblock body %}
+{% block space %}
+<div class="last-space"></div>
+{% endblock space %}

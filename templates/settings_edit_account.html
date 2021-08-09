@@ -1,0 +1,89 @@
+{% extends 'base_page.html' %}
+{% load static %}
+
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/settings_edit.css' %}">{%endblock css%}
+{% block title %}Edit Profile{% endblock title %}
+{% block body %}
+<div class="container_main">
+    <div class="slidebar">
+        <h4>Settings</h4>
+        <ul>    
+            <li><a href="{% url 'settings' %}"><i class="far fa-user-circle"></i>Profile</a></li>
+            {% comment %} <li><a href=""><i class="fas fa-key"></i>Change Password</a></li> {% endcomment %}
+            {% comment %} <li><a href="#"><i class="fas fa-bookmark"></i>Bookmarks</a></li> {% endcomment %}
+        </ul>
+    </div>
+    <div class="main_content">
+        <form method="POST" action="{% url 'settings_edit' %}">
+            {% csrf_token %}
+            <h1>Edit Profile</h1>
+            <div class="medium-space"></div>
+            <label>Enter fullname:</label>
+            <input id="fname_test" name="fname_test" type="text" required placeholder="Your fullname" value="{{ user.fullname }}">
+            <div class="small-space"></div>
+
+            <label>Enter username:</label>
+            <input id="uname_test" name="uname_test" type="text" required placeholder="Your username" onchange="checkuname()" value="{{ user.username }}">
+            <ul id="uname_ans"></ul>
+            <div class="medium-space"></div>
+
+            <label class="inline-label">Enter Date of Birth:</label>
+            <input id="date_test" name="date_test"type="date"placeholder="dd-mm-yyyy"   required onchange="check_dat(documentgetElementById('date_test').value)" value="{{ user.dob }}">
+            <ul id="date_ans"></ul>
+            <div class="small-space"></div>
+
+            <label>Gender:</label>
+            <input type="radio" id="male" name="btn" required value="Male">
+            <label class="inline-label gender-label" for="male">Male</label>
+            <input type="radio" id="female"name="btn"value="Female">
+            <label class="inline-label gender-label" for="female">Female</label>
+            <input type="radio" id="other" name="btn" value="Other">
+            <label class="inline-label gender-label" for="other">Other</label>
+            <div class="small-space"></div>
+
+            <label>Enter email:</label>
+            <input id="email_test" name="email_test" type="text" required placeholder="Your email" onchange="check_email()" value="{{ user.email }}">
+            <ul id="email_ans"></ul>
+            <div class="small-space"></div>
+
+            <label>Enter state:</label>
+            <select onchange="print_city('state', this.selectedIndex);"     id="sts"name="state" class="form-control" required></select>
+            <div class="small-space" value="{{ user.state }}"></div>
+
+            <label>Enter city:</label>
+            <select id ="state" class="form-control" name="city" required value="{{ user.city }}">
+                <option>Select City</option>
+            </select>
+
+            <div class="small-space"></div>
+
+            <label>Enter pincode:</label>
+            <input id="pincode_test" name="pincode_test" type="number" required placeholder="Your pincode" onchange="check_pincode()" value="{{ user.pincode }}">
+            <ul id="pincode_ans"></ul>
+            <div class="small-space"></div>
+
+            <label class="pass">Enter password:</label>
+            <input id="pass_test1" name="pass_test1" type="password" required   placeholder="Your password" onchange="checkpass()">
+            <ul id="pass_ans1"></ul>
+            <div class="small-space"></div>
+
+            <label class="pass">Re-enter password:</label>
+            <input id="pass_test2" name="pass_test2" type="password" required   placeholder="Your password" onchange="confirmpass()">
+            <p id="pass_ans2"></p>
+            <div class="medium-space"></div>
+
+                <div class="medium-space"></div>
+                <input id="submit_test" type="submit" value="Save changes" class='button'>
+                <p id="submit"></p>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock body %}
+{% block space %}
+<div style="margin-top:1500px;"></div>
+<script src="{% static 'scripts/sigup.js' %}"></script>
+<script src="{% static 'scripts/cities.js' %}"></script>
+<script language="javascript">print_state("sts");</script>
+{% endblock space %}

@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/style_base_page.css' %}"> -->
+    {%block css%}{%endblock css%}
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon_package_v0.16/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon_package_v0.16/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon_package_v0.16/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'images/favicon_package_v0.16/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'images/favicon_package_v0.16/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <title>{% block title %}{% endblock title %} | IAFpedia</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="dropdown">
+                <img id="logo1" src="{% static 'images/website logos/logo1.jpeg' %}" alt="logo">
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="img01">
+                </div>
+            </div>
+            <a href="{% url 'main_page' %}">
+                <img id="logo2" src="{% static 'images/website logos/logo2.png' %}" alt="nameplate">
+            </a>
+            <div class="right">
+                <a href="https://www.indianarmy.nic.in/" target="_blank">
+                    <img class="iaf-logos" title="Go to official Indian Army page" src="{% static 'images/logos/army.png' %}" alt="Army logo">
+                </a>
+                <a href="http://www.indiannavy.nic.in/" target="_blank">
+                    <img class="iaf-logos" title="Go to official Indian Navy page" src="{% static 'images/logos/navy.png' %}" alt="Navy logo">
+                </a>
+                <a href="http://indianairforce.nic.in/" target="_blank">
+                    <img class="iaf-logos" title="Go to official Indian Airforce force page" src="{% static 'images/logos/airforce.png' %}" alt="Airforce logo">
+                </a>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="{% url 'main_page' %}">HOME</a></li>
+                <li><a href="{% url 'newsfeed' %}">NEWS FEED</a></li>
+                <li class="exam1"><a href="{% url 'exams' %}">EXAMS</a>
+                    <div class="sub-menu-exam1">
+                        <ul>
+                            <li><a href="{% url 'exams_army' %}">ARMY</a></li>
+                            <li><a href="{% url 'exams_navy' %}">NAVY</a></li>
+                            <li><a href="{% url 'exams_airforce' %}">AIRFORCE</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="hof"><a href="{% url 'hof_army' %}">HALL OF FAME</a>
+                    <div class="sub-menu-hof">
+                        <ul>
+                            <li><a href="{% url 'hof_army' %}">ARMY</a></li>
+                            <li><a href="{% url 'hof_navy' %}">NAVY</a></li>
+                            <li><a href="{% url 'hof_airforce' %}">AIRFORCE</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="{% url 'he' %}">HISTORICAL EVENTS</a></li>
+                <li><a href="{% url 'donations' %}">DONATIONS</a></li>
+                <div class="right">
+                    {% comment %}
+                    <li class="bell"><a href="#">
+                        <img src="{% static 'images/bell.svg' %}" style="vertical-align: middle;" alt="bell" width="20px"></a> 
+                        <div class="sub-menu-bell">
+                            <ul>
+                                <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+                                <li><a href="#">Lorem ipsum dolor sit amet consectetur.</a></li>
+                                <li><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing.</a></li>
+                            </ul>
+                        </div>    {% endcomment %}
+                    </li>
+                    <li class="user"><a href="{% url 'settings' %}">
+                        <img src="{% static 'images/user.svg' %}" style="vertical-align: middle;" alt="user" width="20px"></a>
+                        <div class="sub-menu-user">
+                            <ul>
+                                {% if user.is_authenticated %}
+                                <li><a href="{% url 'settings' %}"><i class="far fa-user-circle"></i>Profile</a></li>
+                                {% comment %} <li><a href="{% url 'settings' %}"><i class="fas fa-bookmark"></i>Bookmarks</a></li> {% endcomment %}
+                                {% comment %} <li><a href="{% url 'settings' %}"><i class="fas fa-cog"></i>Settings</a></li> {% endcomment %}
+                                <li>
+                                        <a href="{% url 'logout' %}"><i class="fas fa-power-off"></i>Logout</a>
+                                </li>
+                                {% else %}
+                                <li>
+                                        <a href="{% url 'login_page' %}"><i class="fas fa-sign-in-alt"></i>Log in</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <div id="main_container">
+            {% block body %}{% endblock body %}
+        </div>
+        {% block space %}{% endblock space %}
+        <!-- <div class="last-space"></div> -->
+    </main>
+    <footer>
+        <div class="container">
+            <ul>
+                <li><a href="{% url 'about_us' %}">About Us</a></li>
+                <li><a href="{% url 'sources' %}">Sources</a></li>
+                <li><a href="{% url 'privacy_policy' %}">Privacy Policy</a></li>
+                <li><a href="{% url 'contactus' %}">Contact Us</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script>
+        //get the modal
+        var modal = document.getElementById("myModal");
+        //get the image and insert it inside thmodal-use its "alt" text as a caption
+        var img = document.getElementById("logo1");
+        var modalImg = document.getElementById("img01");
+        img.onclick = function(){
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        }
+        //get the <span> element thet closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        //when the user clicks on <span> (x), close thmodal
+        span.onclick = function(){
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>

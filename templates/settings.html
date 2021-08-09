@@ -1,0 +1,73 @@
+{% extends 'base_page.html' %}
+{% load static %}
+
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/settings.css' %}">{%endblock css%}
+{% block title %}Your Profile{% endblock title %}
+{% block body %}
+{% for message in messages %}
+        <h2 id="message">{{message}}</h2>
+        <span id="close" class="close">&times;</span>
+{% endfor %}
+<div class="container_main">
+    <div class="slidebar">
+        <h4>Settings</h4>
+        <ul>    
+            <li><a href=""><i class="far fa-user-circle"></i>Profile</a></li>
+            {% comment %} <li><a href=""><i class="fas fa-key"></i>Change Password</a></li> {% endcomment %}
+            {% comment %} <li><a href="#"><i class="fas fa-bookmark"></i>Bookmarks</a></li> {% endcomment %}
+        </ul>
+    </div>
+    <div class="main_content">
+        {% if user.is_authenticated %}
+        <div class="info">
+            <h1 class="center">Your Profile</h1>
+            <div class="medium-space"></div>
+            <span class="bold">Fullname:</span>
+            <span>{{ user.fullname }}</span>
+            <div class="medium-space"></div>
+
+            <span class="bold">Username:</span>
+            <span>{{ user.username }}</span>
+            <div class="medium-space"></div>
+
+            <label class="inline-label bold">Date of Birth:</label>
+            <span>{{ user.dob }}</span>
+            <div class="medium-space"></div>
+
+            <label class="bold">Gender:</label>
+            <span>{{ user.gender }}</span>
+            <div class="medium-space"></div>
+
+            <label class="bold">Email:</label>
+            <span>{{ user.email }}</span>
+            <div class="medium-space"></div>
+
+            <label class="bold">State:</label>
+            <span>{{ user.state }}</span>
+            <div class="medium-space"></div>
+
+            <label class="bold">City:</label>
+            <span>{{ user.city }}</span>
+            <div class="medium-space"></div>
+
+            <label class="bold">Pincode:</label>
+            <span>{{ user.pincode }}</span>
+            <div class="medium-space"></div>
+            <a href="{% url 'settings_edit' %}" class='button'>Edit Details</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<script>
+    var msg=document.getElementById("message");
+    var c = document.getElementById("close");
+    c.onclick = function(){
+        msg.style.display = "none";
+        c.style.display = "none";
+    }
+</script>
+{% endblock body %}
+{% block space %}
+<div style="margin-top: 1000px;"></div>
+{% endblock space %}

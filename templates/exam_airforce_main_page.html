@@ -1,0 +1,42 @@
+{% extends 'base_page.html' %}
+{% load static %}
+
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style_exam_main_page.css' %}">{%endblock css%}
+{% block title %}Airforce Exams{% endblock title %}
+{% block body %}
+<div class="defence_info_container">
+    <h1>OFFICER'S EXAMS</h1>
+</div>
+<div class="exam_container">
+    <br><br>
+    <div class="soldiers_exam"><br>
+        <div class="box_container">
+            {% for AirforceExam in AirforceExams %}
+            <div class="box" id="box1">
+                <div class="nesting">
+                    {% if AirforceExam.image %}
+                    <div class="image_container">
+                        <img class="image_box" src="{{ AirforceExam.image.url }}">
+                        <div class="image_overlay" class="image_overlay--blur">
+                            <div class="image_title">{{ AirforceExam.title|linebreaksbr }}</div>
+                            <p class="image_description">
+                                Dream big!!
+                            </p>
+                        </div>   
+                    </div>
+                    {% endif %}
+                    <div class="text_container">
+                        <h3>{{ AirforceExam.title|linebreaksbr }}</h3>
+                        <div>
+                            <a class="button" href="airforce/{{AirforceExam.id}}">Know More</a><br>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% endblock body %}

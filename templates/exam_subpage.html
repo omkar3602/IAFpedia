@@ -1,0 +1,100 @@
+{% extends 'base_page.html' %}
+{% load static %}
+
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style_exam_subpage.css' %}">{%endblock css%}
+{% block title %}{{exam.title}}{% endblock title %}
+{% block body %}
+<div class="container_main">
+    <div class="sidebar">
+        <h1>Content</h1>
+        <ul>
+            <li><a href="#">Exam Info</a></li>
+            <li><a href="#exam_info">Syllabus</a></li>
+            <li><a href="#exam_syllabus">Eligibilty Criteria</a></li>
+            <li><a href="#exam_eligibility">Official Link</a></li>
+        </ul>
+    </div>
+
+    <div class="main_content">
+        <div class="section">  <!--1-->
+            <h1 id="exam_info">{{exam.title}}</h1>
+            <table id="exam_info">
+                <tr>
+                    <td>Title</td>
+                    <td>{{exam.title}}</td>
+                </tr>
+                <tr>
+                    <td>Language</td>
+                    <td>{{exam.language}}</td>
+                </tr>
+                <tr>
+                    <td>Occurance</td>
+                    <td>{{exam.occurance}}</td>
+                </tr>
+                <tr>
+                    <td>Mode of Exam</td>
+                    <td>{{exam.mode_of_exam}}</td>
+                </tr>
+                <tr>
+                    <td>Type</td>
+                    <td>{{exam.type}}</td>
+                </tr>
+
+
+            </table>
+        </div>
+
+        <div class="section" > <!--2-->
+            <h1 id="exam_syllabus">Syllabus</h1>
+            <p>
+                {% for key, value in dictionary.items %}
+                <h3>{{ key }}</h3>
+                {{ value }}
+                <br>
+                <br>
+                {% endfor %}
+            </p>
+        </div>
+
+        <div class="section" id="exam_eligibility">  <!--3-->
+            <h1>Eligibilty Criteria</h1>
+            <br>
+            <br>
+            <h2>Nationality</h2>
+                <p>
+                {% for line in eligibility_nationality %}
+                {{ line }}
+                <br>
+                {% endfor %}
+                </p>
+            <h2>Educational Criteria</h2>
+                <p>
+                {% for line in eligibility_educational %}
+                {{ line }}
+                <br>
+                {% endfor %}
+                </p>
+            <h2>Age Criteria</h2>
+                <p>
+                {% for line in eligibility_age %}
+                {{ line }}
+                <br>
+                {% endfor %}
+                </p>
+        </div>
+        <br>
+        <div class="section" id="exam_link"> <!---6-->
+            <h1>Official Registeration link</h1>
+            <p>
+                Please refer below link for more information
+            </p>
+            <a id="exam_link1" href="{{exam.link}}" target="_blank">{{exam.link}}</a>
+        </div>
+    </div>
+
+</div>
+<a href="#" class="fix-element button">
+    <img class="img_arrow" src="{% static 'images/exam_subpage/up-arrow.png' %}">
+</a>
+{% endblock body %}

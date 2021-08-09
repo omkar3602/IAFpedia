@@ -1,0 +1,93 @@
+{% extends 'base_page.html' %}
+{% load static %}
+
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style_aboutus_page.css' %}">
+{%endblock css%}
+{% block title %}About Us{% endblock title %}
+{% block body %}
+<!--Added By Omkar Mudkanna for about_us page on 9 July-->
+<div id="Aboutus_container">
+    <h1>The IAFpedia Story</h1>
+    <article>
+        <section id="section1">
+            <p>Hello, Welcome to Indian Armed Forces pedia.So glad you're here.</p>
+        </section>
+        <section id="section2">
+            <p id="section2_para1">We are the students of Vishwakarma Institute of Technology,Pune.</p>
+            <br>
+            <p id="section2_para2">Recently we have realised that there is no any userfriendly website available<br> which contains absolute information about exams and interveiws conducted by<br> our Indian Armed Forces.
+            India having rich and glorious defence history is<br> unexplored by youths. Many Youngsters in INDIA are unaware of many Defence exams<br> and interveiws organized by IAF. The country needs young and clever aspirants in Defence sector.</p>
+        </section>
+        <section id="section3">
+            <h3>-- Our Mission --</h3>
+            <p>Creating awareness in youngsters about importance of Defence sector.</p>
+            <p>Inspiring the students by presenting rich and glorious history of Indian Army, Navy, AirForce.</p>
+            <p>Providing absolute information about all Defence exams and interveiws.   </p>
+         </section>
+    </article>
+</div>
+<div id="about_creator">
+    <div id="creator_head"><p>-- Creators --</p></div>
+    <div id="creator_templates"> 
+        <div id="creator_1">
+            <div id="creator_content1">
+                <img src="{% static 'images/profiles/profiles.jpg' %}">
+                <ul style="list-style: none;">
+                    <li><a href="https://github.com/omkar2887" target="_blank">Omkar Mudkanna</a></li>
+                    <li>VIT 2024 Chemical</li>
+                </ul>
+            </div>
+        </div>
+        <div id="creator_2">
+            <div id="creator_content2">
+                <img src="{% static 'images/profiles/profiles.jpg' %}">
+                <ul style="list-style: none;">
+                    <li><a href="https://github.com/omkar3602" target="_blank">Omkar Jahagirdar</a></li>
+                    <li>VIT 2024 Computer</li>
+                </ul>
+            </div>
+        </div>
+        <div id="creator_3">
+            <div id="creator_content3">
+                <img src="{% static 'images/profiles/profiles.jpg' %}">
+                <ul style="list-style: none;">
+                    <li><a href="https://github.com/pardeshionkar" target="_blank">Onkar Pardeshi</a></li>
+                    <li>VIT 2024 Chemical</li>
+                </ul>
+            </div>
+        </div>
+        <div id="creator_4">
+            <div id="creator_content4">
+                <img src="{% static 'images/profiles/profiles.jpg' %}">
+                <ul style="list-style: none;">
+                    <li><a href="https://github.com/abhishekotari21" target="_blank">Abhishek Otari</a></li>
+                    <li>VIT 2024 Mechanical</li>
+                </ul>
+            </div>
+        </div>
+        <div id="creator_5">
+            <div id="creator_content5">
+                <img src="{% static 'images/profiles/profiles.jpg' %}">
+                <ul style="list-style: none;">
+                    <li><a href="https://github.com/SakshiOzarde66" target="_blank">Sakshi Ozarde</a></li>
+                    <li>VIT 2024 Computer</li>
+                </ul>
+            </div>
+        </div>
+        <div id="creator_6">
+            <div id="creator_content6">
+                <img src="{% static 'images/profiles/profiles.jpg' %}">
+                <ul style="list-style: none;">
+                    <li><a href="https://github.com/adityPachore" target="_blank">Aditya Pachore</a></li>
+                    <li>VIT 2024 Computer</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Added By Omkar Mudkanna for about_us page-->
+{% endblock body %}
+{% block space %}
+<div class="last-space"></div>
+{% endblock space %}
